@@ -11,7 +11,7 @@ The basic idea is two have two source folders:
 Everything under src/ is old news. You will find the interesting stuff under testsuite/.
 You will find that we extend the packages from src/ with testing classes. For example, 
 we add the class testsuite/parser/ParserTests.java to the parser package. This class contains 
-a handful of test cases for the parser, which is defined in src/parser/Parser.java.
+a handful of test cases for the parser which is defined in src/parser/Parser.java.
    
 This program implements a parser for the language of sequenced well-balanced parentheses. 
 It is given by the following grammar:
