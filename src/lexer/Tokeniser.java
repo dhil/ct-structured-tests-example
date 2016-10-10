@@ -43,8 +43,8 @@ public class Tokeniser {
         return result;
     }
 
-    /*
-     * To be completed
+    /**
+     * This is the interesting stuff.
      */
     private Token next() throws IOException {
 
@@ -54,7 +54,7 @@ public class Tokeniser {
         // get the next character
         char c = scanner.next();
 
-        // recognises the character 'a'
+        // attempt to recognise c
         Token tok;
         if (c == '(')
         	tok = new Token(TokenClass.LPAR, line, column);

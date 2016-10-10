@@ -17,6 +17,11 @@ public class Scanner {
         input = new BufferedReader(new FileReader(source));
     }
     
+    /**
+     * For testing purposes it would be convenient to be able to feed the scanner arbitrary streams, not just file streams.
+     * Fortunately, classes are extensible. We use ad-hoc constructor overloading to provide an interface that accepts abstract streams. 
+     * @param stream
+     */
     public Scanner(InputStream stream) {
     	input = new BufferedReader(new InputStreamReader(stream));
     }

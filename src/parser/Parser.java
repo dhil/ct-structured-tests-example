@@ -11,6 +11,8 @@ import java.util.Queue;
 
 /**
  * @author cdubach, dhil
+ * 
+ * See the bottom half of the class for the interesting stuff.
  */
 public class Parser {
 
@@ -115,10 +117,14 @@ public class Parser {
             result |= (e == token.tokenClass);
         return result;
     }
-     
+
+    /*** The interesting stuff is below ***/
+    
     /**
      * Recall the grammar:
      * S ::= S S | ( S ) | epsilon
+     * 
+     * After removal of left recursion:
      * 
      * S  ::= ( S ) S' | epsilon
      * S' ::= S S' | epsilon
@@ -129,24 +135,32 @@ public class Parser {
     	expect(TokenClass.EOF);
     }
     
+    /**
+     * Parses the empty string "epsilon".
+     */
     public void parseEpsilon() { }
     
-    
+    /**
+     * Parses 
+     * S ::= ( S ) S' | epsilon
+     */
     public void parseS() {    	
     	if (accept(TokenClass.LPAR)) {
-    		expect(TokenClass.LPAR); // Consume (
-    		if (accept(TokenClass.LPAR))
-    			parseS();
-    		else
-    			parseEpsilon();
-    		expect(TokenClass.RPAR); // Consume )
+    		expect(TokenClass.LPAR); // Consume '('
+    		
+    		if (accept(TokenClass.LPAR)) parseS();
+    		else parseEpsilon();
+    		
+    		expect(TokenClass.RPAR); // Consume ')'
     		parseSprime();
-    	} else if (accept(TokenClass.EOF))
+    	} else
     		parseEpsilon();
-    	else 
-    		error(TokenClass.LPAR, TokenClass.EOF);
     }         
     
+    /**
+     * Parses 
+     * S' ::= S S' | epsilon
+     */
     public void parseSprime() {    	
     	if (accept(TokenClass.LPAR)) {
     		parseS();

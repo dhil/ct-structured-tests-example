@@ -19,6 +19,9 @@ import java.util.ArrayList;
  */
 public class TokeniserTests {
 
+	/**
+	 * Some convenient factory methods
+	 */
 	public Scanner makeScanner(InputStream input) {
 		return new Scanner(input);
 	}
@@ -27,6 +30,9 @@ public class TokeniserTests {
 		return new Tokeniser(makeScanner(input));
 	}
 	
+	/**
+	 * Turns a given stream of characters into a stream of tokens.
+	 */
 	public ArrayList tokenize(InputStream input) {
 		ArrayList<Token> tokens = new ArrayList();	
 		Tokeniser tokeniser = makeTokeniser(input);
@@ -40,6 +46,10 @@ public class TokeniserTests {
 		return tokens;
 	}
 	
+	/**
+	 * Checks whether two token sequences are equal. We define equality element-wise for sequences, 
+	 * and moreover, we define equality on tokens up to the tokenClass.	 
+	 */
 	public void assertEqualsSequence(ArrayList<Token> expected, ArrayList<Token> actual) {
 		assertEquals(expected.size(), actual.size());
 		
@@ -47,6 +57,9 @@ public class TokeniserTests {
 			assertEquals(expected.get(i).tokenClass, actual.get(i).tokenClass);
 	}
 	
+	/**
+	 * Tests whether the empty program is recognised.
+	 */
 	@Test
 	public void empty() {
 		ArrayList<Token> empty  = new ArrayList<Token>() {{
@@ -56,6 +69,9 @@ public class TokeniserTests {
 		assertEqualsSequence(empty, tokens);
 	}
 	
+	/**
+	 * Tests whether "()()" is recognised.
+	 */
 	@Test
 	public void lrlr() {
 		ArrayList<Token> lrlr = new ArrayList<Token>() {{ 
@@ -71,6 +87,9 @@ public class TokeniserTests {
 		assertEqualsSequence(lrlr, tokens);
 	}
 	
+	/**
+	 * Tests whether "())" is recognised.
+	 */
 	@Test
 	public void lrc() {
 		ArrayList<Token> lr_invalid = new ArrayList<Token>() {{ 
