@@ -23,8 +23,20 @@ S ::= S S
 ```
 where epsilon denotes the empty string.
 
-## Example programs
-To be written...
+## Example outputs
+```
+$ java -cp bin Main
+Usage: java Main string
+$ java -cp bin Main "()"
+$ java -cp bin Main "("
+Parsing error: expected (RPAR) found (EOF) at 1:2
+Parse errors: 1
+$ java -cp bin Main "(())()(())"
+$ java -cp bin Main "(((x))))"
+Lexing error: unrecognised character (x) at 1:4
+Parsing error: expected (RPAR) found (INVALID) at 1:4
+Parse errors: 2
+```
 
 ## Building the project
 I have provided two build files:
