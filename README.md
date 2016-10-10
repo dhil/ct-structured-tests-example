@@ -133,6 +133,6 @@ See the files [`testsuite/lexer/TokeniserTests.java`](testsuite/lexer/TokeniserT
 These exercises are optional. If you have no experience with structured testing then I strongly encourage you to attempt exercises 2 and 3.
 
 1. Apply the left recursion elimination algorithm to the grammar.
-2. Implement two failing test cases for either the tokeniser or parser (or both!). Thereafter, implement two correct test cases.
+2. Implement two test cases with incorrect programs for either the tokeniser or parser (or both!). Thereafter, implement two  test cases with correct programs.
 3. Implement a testing class for the scanner.
 4. Modify the parser and lexer to accept the language of alternating sequenced homogeneous well-balanced parentheses and braces, given by the grammar `S ::= S P | ( S ) | epsilon` where `P ::= { P } S | epsilon`. In addition fix the failing test cases and write some new test cases.
