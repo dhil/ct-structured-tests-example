@@ -8,7 +8,7 @@ The basic idea is two have two source folders:
 * `src/` -- where the main project packages (lexer, parser, etc.) reside
 * `testsuite/` -- where the testing classes reside
     
-Everything under src/ is old news. You will find the interesting stuff under testsuite/.
+Everything under `src/` is old news. You will find the interesting stuff under `testsuite/`.
 You will find that we extend the packages from src/ with testing classes. For example, 
 we add the class testsuite/parser/ParserTests.java to the parser package. This class contains 
 a handful of test cases for the parser which is defined in src/parser/Parser.java.
@@ -45,8 +45,8 @@ Parse errors: 2
 ## Building the project
 I have provided two build files:
 
-* `ctbuild.xml` the standard build file from the [ct repository](https://bitbucket.org/cdubach/ct-16-17) (which is the build file used by the automated feedback system).
-* `build.xml` which contains a recipe for building JUnit test reports.
+* [`ctbuild.xml`](ctbuild.xml) the standard build file from the [ct repository](https://bitbucket.org/cdubach/ct-16-17) (which is the build file used by the automated feedback system).
+* [`build.xml`](build.xml) which contains a recipe for building JUnit test reports.
 
 The project builds with the standard build file, e.g.
 ```
