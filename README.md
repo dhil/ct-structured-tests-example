@@ -5,8 +5,8 @@ that CT Test Suite will build your project even though you make use of an unsupp
  
 The basic idea is two have two source folders:
 
-* src/ -- where the main project packages (lexer, parser, etc.) reside
-* testsuite/ -- where the testing classes reside
+* `src/` -- where the main project packages (lexer, parser, etc.) reside
+* `testsuite/` -- where the testing classes reside
     
 Everything under src/ is old news. You will find the interesting stuff under testsuite/.
 You will find that we extend the packages from src/ with testing classes. For example, 
@@ -23,16 +23,20 @@ S ::= S S
 ```
 where epsilon denotes the empty string.
 
-## Example outputs
+### Example outputs
+It may be instructive to get an intuition for the kind of programs that the parser accepts. The parser has a simple command line interface:
 ```
 $ java -cp bin Main
 Usage: java Main string
+```
+where `string` is the input. Below are some *ad-hoc* tests:
+```
 $ java -cp bin Main "()"
 $ java -cp bin Main "("
 Parsing error: expected (RPAR) found (EOF) at 1:2
 Parse errors: 1
 $ java -cp bin Main "(())()(())"
-$ java -cp bin Main "(((x))))"
+$ java -cp bin Main "(((x)))"
 Lexing error: unrecognised character (x) at 1:4
 Parsing error: expected (RPAR) found (INVALID) at 1:4
 Parse errors: 2
@@ -122,6 +126,8 @@ test:
 BUILD SUCCESSFUL
 Total time: 0 seconds
 ```
+## Writing test cases
+See the files [`testsuite/lexer/TokeniserTests.java`](testsuite/lexer/TokeniserTests.java) and [`testsuite/parser/ParserTests.java`](testsuite/parser/ParserTests.java) for example test cases.
 
 ## Exercises
 These exercises are optional. If you have no experience with structured testing then I strongly encourage you to attempt exercises 2 and 3.
