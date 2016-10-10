@@ -51,7 +51,9 @@ public class Main {
     	// Parse input
     	parser.parse();
     	int errors = parser.getErrorCount() + tokeniser.getErrorCount();
-    	if (errors > 0)
+    	if (errors > 0) {
     		System.err.println("Parse errors: " + errors);
+                System.exit(1);
+        }
     }
 }
